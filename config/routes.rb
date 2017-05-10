@@ -3,6 +3,7 @@ Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :favorite_products, :only => :index do
       get :users, :on => :member
+      get :export_all, :on => :collection
     end
   end
 

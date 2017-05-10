@@ -12,6 +12,10 @@ module Spree
         @users = @product.favorite_users.page(params[:page])
       end
 
+      def export_all
+        send_data(Spree::Favorite.to_csv(col_sep: ";"), filename: "favorites.xls", type: "application/xls")
+      end
+
       private
         def sort_in_ascending_users_count?
           params[:q] && params[:q][:s] == 'favorite_users_count asc'
