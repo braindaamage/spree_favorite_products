@@ -11,7 +11,7 @@ module Spree
     def self.to_csv(options = { col_sep: ';' })
       CSV.generate(options) do |csv|
         csv << ['SKU', 'Nombre Cliente', 'Rut', 'E-Mail']
-        self.class.order(user_id: :asc).each do |favorite|
+        Spree::Favorite.order(user_id: :asc).each do |favorite|
           data = []
 
           data << (favorite.variant.sku rescue '')
