@@ -12,7 +12,7 @@ module Spree
         @users = @product.favorite_users.page(params[:page])
       end
 
-      def export_all
+      def export
         send_data(Spree::Favorite.to_csv(col_sep: ";"), filename: "favorites.xls", type: "application/xls")
       end
 
